@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="employee" class="springiocex.Employee" scope="singleton" autowire="byName" init-method = "init" 
+      destroy-method = "destroy">
+		<!-- DI -->
+		<constructor-arg index="0" value="HR"></constructor-arg>
+		<constructor-arg index="1" value="ACCOUNTANT"></constructor-arg>
+		<property name="empid" value="ST101"/>
+		<property name="empname" value="gayu"/>
+	</bean>
+
+	<bean id="estatus" class="springiocex.EmpStatus" scope="singleton">
+		<property name="empstatus" value="Pending...."/>
+		<property name="empnames">
+			<list>
+				<value>gayu</value>
+				<value>shiny</value>
+				<value>keerthi</value>
+				<ref bean="edesignation"/>
+			</list>
+			
+		</property>
+	</bean>
+	
+	<bean id="edesignation" class="springiocex.Empdesignation" >
+		<property name="empdesig"><value>PROGRAMMER_TRAINEE</value></property>
+	</bean>
+
+	
+</beans>
